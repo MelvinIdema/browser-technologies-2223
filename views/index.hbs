@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Info</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+  {{#if errors}}
+    <article class="alert danger" role=alert>
+      <header>
+      <strong>Pas op!</strong> Je hebt wat problemen in je formulier:
+      </header>
+      <br>
+      <ul>
+        {{#each errors}}
+          <li>{{msg}}</li>
+        {{/each}}
+      </ul>
+    </article>
+  {{/if}}
+  <form method="POST">
+    <fieldset>
+      <div class="row">
+        <div class="twelve columns">
+          <legend>Studentgegevens</legend>
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for="student_name">Naam:</label>
+          <input class="u-full-width" type="text" id="student_name" name="student_name" value="{{studentName}}" required>
+        </div>
+        <div class="six columns">
+          <label for="student_number">Nummer:</label>
+          <input class="u-full-width" type="number" id="student_number" name="student_number" value="{{studentNumber}}" required>
+        </div>
+      </div>
+    </fieldset>
+
+    {{#each courses}}
+      <fieldset>
+        <legend>{{courseName}}</legend>
+        <div class="row">
+          <div class="twelve columns">
+            <label for="course_name" hidden>Naam:</label>
+            <input class="u-full-width" type="text" id="course_name" name="course_name" value="{{courseName}}" hidden required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="six columns">
+            <label for="teacher_name">Docent(en):</label>
+            <input class="u-full-width" type="text" id="teacher_name" name="teacher_name" value="{{teacherName}}" required>
+          </div>
+          <div class="six columns">
+            <label for="course_weeks">Weken waarin je het vak deed:</label>
+            <input class="u-full-width" type="text" id="course_weeks" name="course_weeks" value="{{courseWeeks}}" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="four columns">
+            <label for="rating_lesstof">Lesstof (hoe moeilijk is het):</label>
+            <input type="number" id="rating_lesstof" name="rating_lesstof" min="1" max="10" value="{{#if ../errors}}{{ratingLesstof}}{{else}}10{{/if}}" required>
+          </div>
+          <div class="four columns">
+            <label for="rating_uitleg">Uitleg (hoe duidelijk is het uitgelegd):</label>
+            <input type="number" id="rating_uitleg" name="rating_uitleg" min="1" max="10" value="{{#if ../errors}}{{ratingUitleg}}{{else}}10{{/if}}" required>
+          </div>
+          <div class="four columns">
+            <label for="rating_eigen_inzicht">Eigen inzicht (hoe goed snap je het):</label>
+            <input type="number" id="rating_eigen_inzicht" name="rating_eigen_inzicht" min="1" max="10" value="{{#if ../errors}}{{ratingEigenInzicht}}{{else}}10{{/if}}" required>
+          </div>
+        </div>
+      </fieldset>
+    {{/each}}
+
+    <fieldset>
+      <input class="button-primary" type="submit" value="Submit">
+    </fieldset>
+  </form>
+</div>
+</body>
+</html>

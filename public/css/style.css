@@ -1,0 +1,24 @@
+body > .container:first-of-type {
+  margin-top: 36px;
+}
+
+.alert {
+  padding: 20px;
+  color: black;
+  border-radius: 12px;
+  margin-bottom: 36px;
+}
+
+.danger {
+  background-color: #FEE;
+  border: 1px solid #EDD;
+  color: #A66;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+.alert.danger ul {
+  margin: 0;
+}
