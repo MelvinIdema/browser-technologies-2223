@@ -32,7 +32,7 @@
     </article>
   {{/if}}
   <form method="POST">
-    <fieldset>
+    <fieldset id="student">
       <legend>Studentgegevens</legend>
       <div class="row">
         <div class="six columns">
@@ -68,15 +68,15 @@
         <div class="row">
           <div class="four columns">
             <label for="rating_lesstof">Lesstof (hoe moeilijk is het):</label>
-            <input type="number" id="rating_lesstof" name="rating_lesstof" min="1" max="10" value="{{#if ../errors}}{{ratingLesstof}}{{else}}10{{/if}}" required>
+            <input type="number" id="rating_lesstof" name="rating_lesstof" min="1" max="10" value="{{#if ../errors}}{{ratingLesstof}}{{else}}1{{/if}}" required>
           </div>
           <div class="four columns">
             <label for="rating_uitleg">Uitleg (hoe duidelijk is het uitgelegd):</label>
-            <input type="number" id="rating_uitleg" name="rating_uitleg" min="1" max="10" value="{{#if ../errors}}{{ratingUitleg}}{{else}}10{{/if}}" required>
+            <input type="number" id="rating_uitleg" name="rating_uitleg" min="1" max="10" value="{{#if ../errors}}{{ratingUitleg}}{{else}}1{{/if}}" required>
           </div>
           <div class="four columns">
             <label for="rating_eigen_inzicht">Eigen inzicht (hoe goed snap je het):</label>
-            <input type="number" id="rating_eigen_inzicht" name="rating_eigen_inzicht" min="1" max="10" value="{{#if ../errors}}{{ratingEigenInzicht}}{{else}}10{{/if}}" required>
+            <input type="number" id="rating_eigen_inzicht" name="rating_eigen_inzicht" min="1" max="10" value="{{#if ../errors}}{{ratingEigenInzicht}}{{else}}1{{/if}}" required>
           </div>
         </div>
       </fieldset>

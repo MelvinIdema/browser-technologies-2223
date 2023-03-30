@@ -54,9 +54,6 @@ function validateStudentNumber() {
     }
 }
 
-validateRequiredInputs();
-validateStudentNumber();
-
 /**
  * MULTI STEP FORM
  */
@@ -190,3 +187,5 @@ function makeFormStepsSaveable() {
 
 if (document.querySelector(":not(body)")) makeFormMultiStep();
 if(window.localStorage) makeFormStepsSaveable();
+validateRequiredInputs();
+validateStudentNumber();
