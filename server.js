@@ -5,7 +5,13 @@ import {body, validationResult} from "express-validator";
 
 const app = express();
 
-app.engine('hbs', engine({extname: '.hbs', defaultLayout: false}));
+app.engine('hbs', engine({
+    extname: '.hbs',
+    defaultLayout: false,
+    helpers: {
+        replace: (str, find, replace) => str.replaceAll(find, replace),
+    }
+}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(process.cwd(), 'views'))
 
@@ -82,6 +88,7 @@ app.post('/',
         .withMessage('Please enter all ratings for your own insight'),
     (req, res) => {
         const {student_name: studentName, student_number: studentNumber, course_name: course_names, ...rest} = req.body;
+        console.log(req.body)
 
         const courses = course_names.map((courseName, index) => ({
             courseName: courseName,

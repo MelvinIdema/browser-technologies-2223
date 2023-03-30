@@ -22,3 +22,184 @@ li:last-child {
 .alert.danger ul {
   margin: 0;
 }
+
+fieldset {
+  border: 1px solid #DDD;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 36px;
+}
+
+input:invalid {
+  border: 1px solid #f00;
+}
+
+input:focus-visible:invalid {
+  border: 1px solid #f00;
+}
+
+.input-error {
+  color: #f00;
+  display: block;
+  margin-top: -0.75em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.button-primary[disabled] {
+  background-color: #DDD;
+  border-color: #DDD;
+}
+
+.button-primary[disabled]:hover {
+  background-color: #DDD;
+  border-color: #DDD;
+  cursor: not-allowed;
+}
+
+#steps {
+  all: unset;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+
+#steps li {
+  all: unset;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+
+  border-radius: 50%;
+  border: 1px solid #DDD;
+  color: #DDD;
+  text-align: center;
+
+  font: 24px Arial, sans-serif;
+
+  /* Als aspect-ratio ondersteund wordt */
+  aspect-ratio: 1/1;
+}
+
+#steps li.active {
+  background: #4ad66d;
+  border-color: #4ad66d;
+  color: #fff;
+}
+
+#steps li.done {
+  background: #4ad66d;
+  border-color: #4ad66d;
+  color: #fff;
+}
+
+@supports selector(:not(body)) {
+  #prev {
+    float: left;
+  }
+
+  #next {
+    float: right;
+  }
+
+  input[type="submit"] {
+    float: right;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+    color: #eee;
+  }
+
+  .alert {
+    background-color: #333;
+    border-color: #444;
+    color: #eee;
+  }
+
+  .danger {
+    background-color: #333;
+    border-color: #444;
+    color: #eee;
+  }
+
+  fieldset {
+    border-color: #444;
+  }
+
+  input:invalid {
+    border-color: #f00;
+  }
+
+  input:focus-visible:invalid {
+    border-color: #f00;
+  }
+
+  #steps li {
+    border-color: #444;
+    color: #444;
+  }
+
+  input[type="text"], input[type="number"] {
+    background-color: #333;
+    border-color: #444;
+    color: #eee;
+  }
+}
+
+/* SOURCE: https://www.w3schools.com/howto/howto_js_snackbar.asp */
+/* The snackbar - position it at the bottom and in the middle of the screen */
+.snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #33C3F0; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

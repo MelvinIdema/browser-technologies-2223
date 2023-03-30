@@ -3,13 +3,21 @@
 <head>
   <title>Student Info</title>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="container">
+  <div class="row">
+    <div class="twelve columns">
+      <ul id="steps" class="hidden">
+        <li class="active">1</li>
+      </ul>
+    </div>
+  </div>
   {{#if errors}}
     <article class="alert danger" role=alert>
       <header>
@@ -25,30 +33,26 @@
   {{/if}}
   <form method="POST">
     <fieldset>
-      <div class="row">
-        <div class="twelve columns">
-          <legend>Studentgegevens</legend>
-        </div>
-      </div>
+      <legend>Studentgegevens</legend>
       <div class="row">
         <div class="six columns">
-          <label for="student_name">Naam:</label>
+          <label for="student_name">Volledige Naam:</label>
           <input class="u-full-width" type="text" id="student_name" name="student_name" value="{{studentName}}" required>
         </div>
         <div class="six columns">
-          <label for="student_number">Nummer:</label>
-          <input class="u-full-width" type="number" id="student_number" name="student_number" value="{{studentNumber}}" required>
+          <label for="student_number">Studentennummer:</label>
+          <input class="u-full-width" type="text" inputmode="number" pattern="^(5|6)[0-9]{8}" id="student_number" name="student_number" value="{{studentNumber}}" required>
         </div>
       </div>
     </fieldset>
 
     {{#each courses}}
-      <fieldset>
+      <fieldset id="{{replace courseName " " "-"}}">
         <legend>{{courseName}}</legend>
         <div class="row">
           <div class="twelve columns">
             <label for="course_name" hidden>Naam:</label>
-            <input class="u-full-width" type="text" id="course_name" name="course_name" value="{{courseName}}" hidden required>
+            <input class="u-full-width" type="text" id="course_name-{{courseName}}" name="course_name" value="{{courseName}}" hidden readonly required>
           </div>
         </div>
         <div class="row">
@@ -77,11 +81,11 @@
         </div>
       </fieldset>
     {{/each}}
-
-    <fieldset>
-      <input class="button-primary" type="submit" value="Submit">
-    </fieldset>
+    <button class="button-primary hidden" type="button" id="prev" aria-hidden="true">Vorige</button>
+    <button class="button-primary hidden" type="button" id="next" aria-hidden="true">Volgende</button>
+    <input class="button-primary" id="submit" type="submit" value="Submit">
   </form>
 </div>
+<script src="/js/main.js"></script>
 </body>
 </html>
