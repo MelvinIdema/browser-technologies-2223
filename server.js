@@ -3,6 +3,8 @@ import {engine} from 'express-handlebars';
 import path from 'path';
 import {body, validationResult} from "express-validator";
 
+const port = process.env.PORT || 3000
+
 const app = express();
 
 app.engine('hbs', engine({
@@ -107,6 +109,6 @@ app.post('/',
         res.render('overview', {studentName, studentNumber, courses});
     });
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server listening on port 3000');
 });
