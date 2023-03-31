@@ -1,6 +1,4 @@
 const submitButton = document.querySelector("#submit");
-const nextButton = document.querySelector("#next")
-const prevButton = document.querySelector("#prev")
 
 /**
  * FORM VALIDATION
@@ -58,8 +56,18 @@ function validateStudentNumber() {
  * MULTI STEP FORM
  */
 function makeFormMultiStep() {
+    const form = document.querySelector("form");
     const fieldSets = document.querySelectorAll("fieldset:not(:first-of-type)");
     const stepsList = document.querySelector("#steps");
+
+    const btns = `
+        <button class="button-primary hidden" type="button" id="prev" aria-hidden="true">Vorige</button>
+        <button class="button-primary hidden" type="button" id="next" aria-hidden="true">Volgende</button>
+    `;
+    form.insertAdjacentHTML('beforeend', btns);
+
+    const nextButton = document.querySelector("#next")
+    const prevButton = document.querySelector("#prev")
 
     stepsList.classList.remove('hidden');
 

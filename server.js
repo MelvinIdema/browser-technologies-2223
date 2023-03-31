@@ -3,7 +3,7 @@ import {engine} from 'express-handlebars';
 import path from 'path';
 import {body, validationResult} from "express-validator";
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -65,6 +65,8 @@ app.post('/',
         .withMessage('Please enter a valid name')
         .escape(),
     body('student_number')
+        .isNumeric()
+        .withMessage('Please enter a valid student number')
         .isLength({min: 9, max: 79})
         .withMessage('Please enter a valid student number')
         .escape(),
